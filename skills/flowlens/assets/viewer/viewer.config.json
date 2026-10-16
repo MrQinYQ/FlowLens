@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "initialProject": "./examples/ad-campaign.json",
+  "examples": [
+    {"id": "ad-campaign", "title": "广告投放工作台", "url": "./examples/ad-campaign.json"},
+    {"id": "order", "title": "订单履约体验", "url": "./examples/order.json"}
+  ]
+}

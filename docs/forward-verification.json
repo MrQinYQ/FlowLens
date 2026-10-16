@@ -1,0 +1,47 @@
+{
+  "preview_url": "http://127.0.0.1:49617",
+  "validation_level": [
+    "schema",
+    "HTTP resources",
+    "project flow data assertions"
+  ],
+  "http_checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 922
+    },
+    {
+      "path": "/viewer.config.json",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 308
+    },
+    {
+      "path": "/project.json",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 4717
+    },
+    {
+      "path": "/src/styles.css",
+      "status": 200,
+      "content_type": "text/css",
+      "bytes": 31873
+    },
+    {
+      "path": "/src/main.js",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 873
+    }
+  ],
+  "screens": 3,
+  "transitions": 4,
+  "required_field": "borrower-name",
+  "browser_tested": false,
+  "listener_verified": "127.0.0.1:49617 (LISTEN)",
+  "server_stopped": true,
+  "stop_verification": "Ctrl+C returned exit 0; lsof for TCP port 49617 returned no listeners (exit 1)."
+}

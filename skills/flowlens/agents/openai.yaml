@@ -1,0 +1,4 @@
+interface:
+  display_name: "FlowLens 原型与交互"
+  short_description: "将产品需求或已有原型图变成本地可拖动缩放的交互流程工作台"
+  default_prompt: "使用 $flowlens 把这份需求整理成可点击的原型和交互流程，并在本地启动查看。"

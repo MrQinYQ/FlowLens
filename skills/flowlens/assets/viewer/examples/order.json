@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "id": "order-demo",
+  "title": "订单履约体验",
+  "description": "一套独立的订单示例，用相同查看器展示不同业务。",
+  "demo": true,
+  "source": {
+    "label": "订单流程示例",
+    "status": "独立示例 · 用于验证数据注入"
+  },
+  "modules": [
+    {
+      "id": "purchase",
+      "title": "下单与支付"
+    },
+    {
+      "id": "fulfillment",
+      "title": "结果与履约"
+    }
+  ],
+  "screens": [
+    {
+      "id": "orders",
+      "title": "订单列表",
+      "module": "purchase",
+      "x": 0,
+      "y": 0,
+      "kind": "dashboard",
+      "description": "查看订单，并创建新订单。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "我的订单",
+          "caption": "查看最近的订单记录"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "订单",
+            "状态",
+            "金额"
+          ],
+          "rows": [
+            [
+              "ORD-20261016",
+              "已完成",
+              "¥ 299"
+            ],
+            [
+              "ORD-20261015",
+              "待支付",
+              "¥ 129"
+            ]
+          ]
+        }
+      ],
+      "entry": true,
+      "role": "购买用户",
+      "status": "流程起点"
+    },
+    {
+      "id": "checkout",
+      "title": "确认订单",
+      "module": "purchase",
+      "x": 440,
+      "y": 0,
+      "kind": "form",
+      "description": "填写收货信息，确认后进入支付。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "确认订单",
+          "caption": "商品信息与收货方式"
+        },
+        {
+          "type": "fields",
+          "fields": [
+            {
+              "id": "receiver",
+              "label": "收货人",
+              "value": "",
+              "placeholder": "请输入收货人"
+            },
+            {
+              "id": "address",
+              "label": "收货地址",
+              "value": "",
+              "placeholder": "请输入详细地址"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "应付金额 ¥ 299",
+          "tone": "accent",
+          "caption": ""
+        }
+      ],
+      "role": "购买用户"
+    },
+    {
+      "id": "payment",
+      "title": "支付订单",
+      "module": "purchase",
+      "x": 880,
+      "y": 0,
+      "kind": "detail",
+      "description": "演示支付成功与失败两条路径，不发生真实交易。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "支付订单",
+          "caption": "ORD-20261017"
+        },
+        {
+          "type": "callout",
+          "text": "待支付 ¥ 299",
+          "tone": "warning",
+          "caption": ""
+        },
+        {
+          "type": "list",
+          "items": [
+            "这是原型演示，不会调用支付接口。",
+            "请选择下方成功或失败分支。"
+          ]
+        }
+      ],
+      "role": "购买用户",
+      "status": "分支判断"
+    },
+    {
+      "id": "paid",
+      "title": "支付成功",
+      "module": "fulfillment",
+      "x": 880,
+      "y": 480,
+      "kind": "result",
+      "description": "订单支付完成，等待商家发货。",
+      "components": [
+        {
+          "type": "image",
+          "src": "./examples/assets/order-confirmation.svg",
+          "alt": "图片原型示例：点击虚线区域返回订单列表",
+          "hotspots": [
+            {
+              "transition": "finish",
+              "x": 36,
+              "y": 72,
+              "width": 28,
+              "height": 13
+            }
+          ]
+        }
+      ],
+      "role": "购买用户",
+      "status": "成功状态",
+      "notes": [
+        "这个页面通过 image 组件注入一张独立的原型图。",
+        "图片上的百分比热点与 finish 交互关联，缩放后仍可点击。"
+      ]
+    },
+    {
+      "id": "failed",
+      "title": "支付失败",
+      "module": "fulfillment",
+      "x": 440,
+      "y": 480,
+      "kind": "result",
+      "description": "展示失败原因并允许重试。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "支付未完成",
+          "caption": "订单仍保留"
+        },
+        {
+          "type": "callout",
+          "text": "本次支付未成功",
+          "tone": "danger",
+          "caption": "示例原因：支付渠道暂不可用"
+        }
+      ],
+      "role": "购买用户",
+      "status": "异常分支"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "new-order",
+      "from": "orders",
+      "to": "checkout",
+      "label": "创建订单",
+      "tone": "accent"
+    },
+    {
+      "id": "pay",
+      "from": "checkout",
+      "to": "payment",
+      "label": "确认并支付",
+      "requiredFields": [
+        "receiver",
+        "address"
+      ],
+      "condition": "收货人与收货地址已填写",
+      "rules": [
+        "必填项缺失时不能跳转。"
+      ]
+    },
+    {
+      "id": "pay-ok",
+      "from": "payment",
+      "to": "paid",
+      "label": "模拟支付成功",
+      "tone": "success",
+      "outcome": "进入待发货状态"
+    },
+    {
+      "id": "pay-fail",
+      "from": "payment",
+      "to": "failed",
+      "label": "模拟支付失败",
+      "tone": "danger",
+      "outcome": "展示失败原因"
+    },
+    {
+      "id": "retry",
+      "from": "failed",
+      "to": "payment",
+      "label": "重新支付",
+      "tone": "danger"
+    },
+    {
+      "id": "finish",
+      "from": "paid",
+      "to": "orders",
+      "label": "返回订单列表",
+      "tone": "success"
+    }
+  ]
+}

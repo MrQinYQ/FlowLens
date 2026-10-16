@@ -1,0 +1,11 @@
+{
+  "name": "flowlens-prototype-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "python3 tools/serve.py --port 4173",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check src/explorer.js && node --check src/canvas.js && node --check src/prototype.js && node --check src/schema.js && node --check src/geometry.js && node --check src/main.js && node --check src/dom.js"
+  }
+}

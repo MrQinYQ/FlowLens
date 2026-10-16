@@ -1,0 +1,11 @@
+{
+  "name": "flowlens",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python3 skills/flowlens/scripts/flowlens.py serve --project skills/flowlens/assets/viewer --port 4173",
+    "test": "python3 scripts/test.py",
+    "check": "python3 scripts/check.py",
+    "package:skill": "python3 scripts/package_skill.py"
+  }
+}

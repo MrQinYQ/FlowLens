@@ -1,0 +1,559 @@
+{
+  "version": 1,
+  "id": "campaign-demo",
+  "title": "广告投放工作台",
+  "description": "从创建计划到查看投放效果，一张画布读懂整个协作流程。",
+  "demo": true,
+  "source": {
+    "label": "通用广告投放示例",
+    "status": "示例数据 · 非原需求还原"
+  },
+  "modules": [
+    {
+      "id": "campaign",
+      "title": "计划与配置",
+      "description": "广告主创建并配置投放计划"
+    },
+    {
+      "id": "delivery",
+      "title": "审核与投放",
+      "description": "审核分支与投放结果"
+    },
+    {
+      "id": "report",
+      "title": "数据与复盘",
+      "description": "查看效果并回到工作台"
+    }
+  ],
+  "screens": [
+    {
+      "id": "overview",
+      "title": "投放概览",
+      "module": "campaign",
+      "x": 0,
+      "y": 0,
+      "kind": "dashboard",
+      "description": "广告主在这里查看计划状态，并开始一次新的投放。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "投放概览",
+          "caption": "欢迎回来，这是今天的投放表现"
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "今日消耗",
+              "value": "¥ 12,480",
+              "caption": "+12.8%"
+            },
+            {
+              "label": "展示次数",
+              "value": "248,560",
+              "caption": "+8.2%"
+            },
+            {
+              "label": "转化量",
+              "value": "1,286",
+              "caption": "+16.4%"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": [
+            "计划名称",
+            "状态",
+            "日预算"
+          ],
+          "rows": [
+            [
+              "秋季新品推广",
+              "投放中",
+              "¥ 5,000"
+            ],
+            [
+              "品牌曝光计划",
+              "审核中",
+              "¥ 3,000"
+            ],
+            [
+              "新客转化计划",
+              "草稿",
+              "¥ 2,000"
+            ]
+          ]
+        }
+      ],
+      "entry": true,
+      "role": "广告主",
+      "status": "流程起点",
+      "notes": [
+        "一个计划对应一次明确的投放目标。",
+        "数据为演示数据，用于展示组件与页面结构。"
+      ]
+    },
+    {
+      "id": "create",
+      "title": "创建推广计划",
+      "module": "campaign",
+      "x": 440,
+      "y": 0,
+      "kind": "form",
+      "description": "填写计划名称、投放目标与预算，建立计划的基础信息。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "创建推广计划",
+          "caption": "第一步 / 基础信息"
+        },
+        {
+          "type": "fields",
+          "fields": [
+            {
+              "id": "campaignName",
+              "label": "计划名称",
+              "placeholder": "例如：秋季新品推广",
+              "value": ""
+            },
+            {
+              "id": "objective",
+              "label": "投放目标",
+              "type": "select",
+              "options": [
+                "应用推广",
+                "品牌曝光",
+                "线索收集"
+              ],
+              "value": "应用推广"
+            },
+            {
+              "id": "budget",
+              "label": "每日预算（元）",
+              "type": "number",
+              "value": "5000"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "先明确目标，再配置人群",
+          "tone": "neutral",
+          "caption": ""
+        }
+      ],
+      "role": "广告主",
+      "status": "可编辑",
+      "notes": [
+        "点击下一步时校验计划名称和预算。",
+        "本示例只验证必填；预算范围等业务规则须按真实需求补齐。"
+      ]
+    },
+    {
+      "id": "targeting",
+      "title": "配置定向人群",
+      "module": "campaign",
+      "x": 880,
+      "y": 0,
+      "kind": "form",
+      "description": "选择地区、人群与投放时段，明确广告要触达谁。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "定向与排期",
+          "caption": "第二步 / 触达设置"
+        },
+        {
+          "type": "fields",
+          "fields": [
+            {
+              "id": "region",
+              "label": "投放地区",
+              "type": "select",
+              "options": [
+                "全国",
+                "北京",
+                "上海",
+                "广东"
+              ],
+              "value": "全国"
+            },
+            {
+              "id": "audience",
+              "label": "目标人群",
+              "type": "select",
+              "options": [
+                "智能拓量",
+                "新客人群",
+                "已有客户"
+              ],
+              "value": "智能拓量"
+            },
+            {
+              "id": "schedule",
+              "label": "投放时段",
+              "type": "select",
+              "options": [
+                "全天投放",
+                "工作时间",
+                "晚间时段"
+              ],
+              "value": "全天投放"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "预计可触达人群 120 万+",
+          "tone": "accent",
+          "caption": ""
+        }
+      ],
+      "role": "广告主",
+      "status": "可编辑",
+      "notes": [
+        "定向条件影响可触达人群，具体计算口径待真实需求确认。"
+      ]
+    },
+    {
+      "id": "creative",
+      "title": "添加广告创意",
+      "module": "campaign",
+      "x": 1320,
+      "y": 0,
+      "kind": "form",
+      "description": "配置创意标题和落地页，提交后进入审核环节。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "广告创意",
+          "caption": "第三步 / 内容与落地页"
+        },
+        {
+          "type": "fields",
+          "fields": [
+            {
+              "id": "creativeTitle",
+              "label": "创意标题",
+              "value": "发现秋日新品，开启全新体验"
+            },
+            {
+              "id": "landingUrl",
+              "label": "落地页地址",
+              "type": "url",
+              "placeholder": "https://example.com",
+              "value": "https://example.com/autumn"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "创意预览",
+          "tone": "accent",
+          "caption": "秋日上新 · 为你的每一种灵感"
+        }
+      ],
+      "role": "广告主",
+      "status": "待提交",
+      "notes": [
+        "提交前检查标题和落地页是否填写。",
+        "示例不上传真实素材，不发起实际广告投放。"
+      ]
+    },
+    {
+      "id": "review",
+      "title": "计划审核",
+      "module": "delivery",
+      "x": 1320,
+      "y": 480,
+      "kind": "detail",
+      "description": "审核人员检查计划与创意；通过和驳回是两条不同分支。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "审核计划",
+          "caption": "秋季新品推广 / 等待审核"
+        },
+        {
+          "type": "callout",
+          "text": "等待审核结果",
+          "tone": "warning",
+          "caption": "预计审核时间仅为示例"
+        },
+        {
+          "type": "list",
+          "items": [
+            "计划信息：目标、预算、定向",
+            "创意内容：标题、素材、落地页",
+            "审核意见：通过或说明驳回原因"
+          ]
+        }
+      ],
+      "role": "审核人员",
+      "status": "分支判断",
+      "notes": [
+        "演示中可手动选择“审核通过”或“驳回修改”，便于理解两条路径。",
+        "正式权限、时效和审核规则待真实需求确认。"
+      ]
+    },
+    {
+      "id": "active",
+      "title": "投放中",
+      "module": "delivery",
+      "x": 880,
+      "y": 480,
+      "kind": "dashboard",
+      "description": "通过审核后，广告进入投放状态，可继续查看效果数据。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "计划投放中",
+          "caption": "秋季新品推广"
+        },
+        {
+          "type": "callout",
+          "text": "审核通过，已开始投放",
+          "tone": "success",
+          "caption": ""
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "消耗金额",
+              "value": "¥ 2,840"
+            },
+            {
+              "label": "点击次数",
+              "value": "6,208"
+            },
+            {
+              "label": "转化量",
+              "value": "128"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": [
+            "检查项",
+            "结果"
+          ],
+          "rows": [
+            [
+              "计划状态",
+              "投放中"
+            ],
+            [
+              "预算状态",
+              "充足"
+            ]
+          ]
+        }
+      ],
+      "role": "广告主",
+      "status": "成功状态",
+      "notes": [
+        "这里展示审核通过后的成功路径。",
+        "投放状态、预算扣费、暂停等细节未作真实业务承诺。"
+      ]
+    },
+    {
+      "id": "rejected",
+      "title": "驳回与修改",
+      "module": "delivery",
+      "x": 440,
+      "y": 480,
+      "kind": "detail",
+      "description": "展示驳回原因，返回创意页修改后可再次提交。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "计划需要修改",
+          "caption": "秋季新品推广"
+        },
+        {
+          "type": "callout",
+          "text": "创意审核未通过",
+          "tone": "danger",
+          "caption": "示例原因：请补充清晰的落地页信息"
+        },
+        {
+          "type": "list",
+          "items": [
+            "查看审核意见",
+            "修改不符合要求的创意",
+            "再次提交审核"
+          ]
+        }
+      ],
+      "role": "广告主",
+      "status": "异常分支",
+      "notes": [
+        "异常路径应给出明确原因与可操作的恢复入口。",
+        "示例驳回原因用于验证异常说明，不来源于原始需求。"
+      ]
+    },
+    {
+      "id": "report",
+      "title": "投放效果报表",
+      "module": "report",
+      "x": 0,
+      "y": 480,
+      "kind": "dashboard",
+      "description": "汇总计划的展示、点击与转化数据，支持后续复盘。",
+      "components": [
+        {
+          "type": "heading",
+          "text": "投放效果",
+          "caption": "统计周期：最近 7 天（示例）"
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "总消耗",
+              "value": "¥ 28,640"
+            },
+            {
+              "label": "点击率",
+              "value": "2.86%"
+            },
+            {
+              "label": "转化成本",
+              "value": "¥ 22.30"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": [
+            "日期",
+            "展示",
+            "转化"
+          ],
+          "rows": [
+            [
+              "10/16",
+              "48,620",
+              "218"
+            ],
+            [
+              "10/15",
+              "42,180",
+              "196"
+            ],
+            [
+              "10/14",
+              "38,420",
+              "174"
+            ]
+          ]
+        }
+      ],
+      "role": "广告主",
+      "status": "流程终点",
+      "notes": [
+        "报表口径、时区、时间范围以产品真实需求为准。"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "id": "start",
+      "from": "overview",
+      "to": "create",
+      "label": "新建计划",
+      "description": "从投放概览进入计划创建流程。",
+      "outcome": "打开基础信息页",
+      "tone": "accent"
+    },
+    {
+      "id": "configure",
+      "from": "create",
+      "to": "targeting",
+      "label": "下一步：配置人群",
+      "requiredFields": [
+        "campaignName",
+        "budget"
+      ],
+      "condition": "计划名称和每日预算已填写",
+      "rules": [
+        "名称为空时停留当前页并提示。",
+        "每日预算为空时阻止继续。"
+      ],
+      "outcome": "保留已填写内容并打开定向配置"
+    },
+    {
+      "id": "add-creative",
+      "from": "targeting",
+      "to": "creative",
+      "label": "下一步：添加创意",
+      "description": "完成人群设置后配置广告内容。",
+      "outcome": "打开创意配置页"
+    },
+    {
+      "id": "submit",
+      "from": "creative",
+      "to": "review",
+      "label": "提交审核",
+      "requiredFields": [
+        "creativeTitle",
+        "landingUrl"
+      ],
+      "condition": "创意标题和落地页均已填写",
+      "outcome": "计划进入待审核状态",
+      "rules": [
+        "演示不会发出网络提交请求。"
+      ]
+    },
+    {
+      "id": "approve",
+      "from": "review",
+      "to": "active",
+      "label": "审核通过",
+      "tone": "success",
+      "trigger": "审核人员选择通过",
+      "condition": "审核人员确认计划和创意符合要求",
+      "outcome": "计划进入投放中状态"
+    },
+    {
+      "id": "reject",
+      "from": "review",
+      "to": "rejected",
+      "label": "驳回修改",
+      "tone": "danger",
+      "trigger": "审核人员选择驳回",
+      "condition": "发现需修改的问题",
+      "outcome": "展示原因和修改入口",
+      "rules": [
+        "驳回后允许修改并再次提交。"
+      ]
+    },
+    {
+      "id": "revise",
+      "from": "rejected",
+      "to": "creative",
+      "label": "修改创意",
+      "tone": "danger",
+      "description": "回到创意配置，保留之前填写的信息。",
+      "outcome": "修改完成后可再次提交审核"
+    },
+    {
+      "id": "view-report",
+      "from": "active",
+      "to": "report",
+      "label": "查看投放效果",
+      "tone": "success",
+      "outcome": "打开投放效果报表"
+    },
+    {
+      "id": "back-home",
+      "from": "report",
+      "to": "overview",
+      "label": "返回工作台",
+      "outcome": "返回投放概览"
+    }
+  ]
+}

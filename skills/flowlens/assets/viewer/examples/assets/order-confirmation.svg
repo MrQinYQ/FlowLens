@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+  <rect width="900" height="460" rx="16" fill="#faf8fd"/>
+  <rect x="160" y="30" width="580" height="400" rx="20" fill="#fff" stroke="#e9e0f2"/>
+  <circle cx="450" cy="116" r="33" fill="#eaf5ee"/>
+  <path d="m435 116 10 10 21-23" stroke="#77a98b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="450" y="188" font-size="27" font-weight="600" fill="#60506f">支付成功，订单已确认</text>
+    <text x="450" y="221" font-size="14" fill="#a48cb7">这是注入的原型图片，点击下方热点体验跳转</text>
+    <text x="450" y="277" font-size="15" fill="#a48cb7">订单编号 ORD-20261017 · 等待商家发货</text>
+    <rect x="324" y="331.2" width="252" height="59.8" rx="9" fill="#9879cc"/>
+    <text x="450" y="367" font-size="17" fill="#fff">返回订单列表</text>
+  </g>
+</svg>
